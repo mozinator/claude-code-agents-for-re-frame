@@ -330,3 +330,29 @@ npx nyc --reporter=text node out/test.js
 ```
 
 When implementing tests, always strive for comprehensive coverage while maintaining fast execution times and clear test documentation.
+
+## Dos and Don'ts
+
+### ✅ DO:
+- **Test event handlers in isolation** with mock app-db and event data
+- **Use comprehensive test coverage** for critical business logic paths
+- **Create reusable test utilities** and fixtures for common patterns
+- **Test both success and failure paths** for all async operations
+- **Use property-based testing** for complex data transformations
+- **Mock external dependencies** (HTTP, LocalStorage, timers) in tests
+- **Test subscription computations** independently from UI components
+- **Create integration tests** for complete user workflows
+- **Use descriptive test names** that explain the expected behavior
+- **Run tests in CI/CD pipeline** to catch regressions early
+
+### ❌ DON'T:
+- **Don't test implementation details** - focus on behavior and contracts
+- **Don't create flaky tests** that depend on external timing or services
+- **Don't skip testing error conditions** - failure paths are critical
+- **Don't write tests that are too slow** - keep unit tests fast (< 1s each)
+- **Don't ignore test maintenance** - update tests when requirements change
+- **Don't create tests with hard-coded dependencies** on specific data
+- **Don't test re-frame internals** - test your application logic
+- **Don't use real HTTP requests** in unit tests - use mocks instead
+- **Don't create overly complex test setup** - keep tests simple and readable
+- **Don't skip testing edge cases** - null values, empty collections, boundary conditions

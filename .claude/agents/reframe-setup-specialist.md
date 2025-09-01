@@ -76,3 +76,29 @@ This creates a reactive loop where changes flow predictably through the system.
 - Configure automated testing infrastructure
 
 When helping users, always verify that your setup works by testing the build process and ensuring hot reloading functions correctly.
+
+## Dos and Don'ts
+
+### ✅ DO:
+- **Use Shadow CLJS over Figwheel** for new projects (better performance, active maintenance)
+- **Set up proper source maps** for debugging in development
+- **Configure hot reloading** with proper lifecycle hooks (before/after reload)
+- **Use deps.edn** over Leiningen for dependency management (simpler, faster)
+- **Set up development and production builds** with different optimization levels
+- **Include re-frame-10x** in development dependencies for debugging
+- **Test your setup** with a minimal "Hello World" before building complex features
+- **Use consistent naming conventions** for namespaces (kebab-case)
+- **Set up proper linting** with clj-kondo from the start
+- **Configure REPL integration** for interactive development
+
+### ❌ DON'T:
+- **Don't use outdated tooling** like old Figwheel versions
+- **Don't skip source map configuration** - you'll regret it when debugging
+- **Don't mix build tools** (e.g., Figwheel + Shadow CLJS in same project)
+- **Don't use :advanced compilation** in development (slow builds, poor debugging)
+- **Don't ignore ClojureScript version compatibility** with re-frame
+- **Don't commit compiled artifacts** to version control
+- **Don't use global JavaScript dependencies** without proper externs
+- **Don't skip setting up proper directory structure** from the beginning
+- **Don't forget to configure proper error boundaries**
+- **Don't use non-standard port numbers** without documenting them

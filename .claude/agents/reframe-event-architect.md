@@ -119,3 +119,29 @@ You specialize in creating scalable event architectures that handle complex user
 - Create event aggregation patterns
 
 When implementing event systems, always consider the long-term maintainability and debugging experience of your event architecture.
+
+## Dos and Don'ts
+
+### ✅ DO:
+- **Keep event handlers pure** - no side effects, predictable outputs
+- **Use descriptive event names** with consistent namespacing (`:user/login`, `:cart/add-item`)
+- **Implement proper interceptor chains** for cross-cutting concerns
+- **Use `reg-event-fx` for complex workflows** that need multiple effects
+- **Design events as data** - serializable vectors for replay/debugging
+- **Create reusable interceptors** for common validation, logging, auth checks
+- **Use `path` interceptor** to work on sub-sections of app-db
+- **Implement proper error handling** in event handlers
+- **Document event contracts** - what they expect and what they produce
+- **Test event handlers in isolation** with mock data
+
+### ❌ DON'T:
+- **Don't put side effects in event handlers** - use effect handlers instead
+- **Don't make HTTP requests directly** in `reg-event-db` handlers
+- **Don't mutate app-db directly** - always return new state
+- **Don't create deeply nested event chains** - keep dispatch sequences flat
+- **Don't ignore interceptor order** - order matters in the chain
+- **Don't dispatch events from within subscriptions** - breaks reactive flow
+- **Don't create circular event dependencies** - events that trigger themselves
+- **Don't use global state outside app-db** - everything through re-frame
+- **Don't skip event validation** - validate payloads early
+- **Don't make event handlers dependent on external timing** - they should be synchronous

@@ -122,3 +122,29 @@ You are an expert in creating efficient, composable subscription systems in re-f
 - Design subscription regression testing
 
 When designing subscriptions, always consider the reactive nature of the system and optimize for both performance and developer experience.
+
+## Dos and Don'ts
+
+### ✅ DO:
+- **Use signal functions** (`:<-`) to declare subscription dependencies clearly
+- **Layer subscriptions** from simple data access to complex derived views  
+- **Memoize expensive computations** within subscription functions
+- **Use parameterized subscriptions** for dynamic queries (`[sub-id param1 param2]`)
+- **Keep subscription functions pure** - no side effects, predictable outputs
+- **Use `=` for equality checking** - works efficiently with persistent data structures
+- **Create subscription hierarchies** that reuse common base subscriptions
+- **Test subscriptions independently** with mock app-db data
+- **Use descriptive subscription names** that indicate what data they provide
+- **Implement proper error handling** with default values for missing data
+
+### ❌ DON'T:
+- **Don't create subscriptions that depend on too many signals** - keep dependencies focused
+- **Don't perform expensive operations** without memoization in frequently-called subscriptions
+- **Don't create circular subscription dependencies** - they'll cause infinite loops
+- **Don't use subscriptions for side effects** - they're for data derivation only
+- **Don't ignore subscription performance** - use React DevTools to profile
+- **Don't create subscriptions that return different object identities** for same data
+- **Don't subscribe in event handlers** - breaks the reactive flow pattern
+- **Don't create deeply nested subscription computations** - flatten when possible
+- **Don't forget to handle nil/missing data cases** gracefully
+- **Don't use subscriptions for temporary UI state** - use component state instead

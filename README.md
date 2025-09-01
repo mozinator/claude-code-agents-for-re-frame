@@ -2,16 +2,7 @@
 
 12 specialized Claude Code agents for comprehensive re-frame ClojureScript development.
 
-## What is re-frame?
-
-re-frame is a mature, functional ClojureScript framework for building modern web applications. It emphasizes "data and functions" over object-oriented patterns, using a reactive architecture where "data coordinates functions."
-
-### Core Features
-- **Reactive Programming**: Changes flow through the system automatically
-- **Functional Design**: Pure functions for predictable, testable code
-- **Data-Oriented Architecture**: Application state as immutable data structures
-- **Six Dominoes Pattern**: Event dispatch → Event handling → Effect handling → Query → View → DOM
-- **Unidirectional Data Flow**: Predictable state changes through events
+**[re-frame](https://day8.github.io/re-frame/re-frame/)** is a mature, functional ClojureScript framework for building modern web applications with reactive programming and data-oriented design.
 
 ## Available Agents
 

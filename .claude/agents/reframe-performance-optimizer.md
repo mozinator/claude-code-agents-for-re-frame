@@ -359,3 +359,29 @@ npx lighthouse http://localhost:8080 --output json --output-path ./lighthouse-re
 - Use weak references for caches when appropriate
 
 When optimizing performance, always measure before and after changes to ensure improvements and avoid premature optimization.
+
+## Dos and Don'ts
+
+### ✅ DO:
+- **Measure performance before optimizing** - use profiling tools to identify bottlenecks
+- **Use React DevTools** to profile component re-renders and subscription updates
+- **Implement proper React keys** for dynamic lists and collections
+- **Memoize expensive subscription computations** with explicit memoization
+- **Use lazy loading and code splitting** for large applications
+- **Monitor bundle size** and implement tree-shaking for production builds
+- **Use virtual scrolling** for large data sets (1000+ items)
+- **Implement proper shouldComponentUpdate** for expensive components
+- **Cache computed results** where appropriate (subscription memoization)
+- **Use performance monitoring** in production to track real user metrics
+
+### ❌ DON'T:
+- **Don't optimize without measuring** - premature optimization is the root of all evil
+- **Don't ignore the React DevTools warnings** about key props and re-renders  
+- **Don't create functions inside render methods** - use useCallback equivalent patterns
+- **Don't over-memoize** - memoization has overhead, use it strategically
+- **Don't ignore subscription performance** - expensive subscriptions block the UI
+- **Don't use :advanced compilation** during development (slow builds)
+- **Don't create deep component hierarchies** without considering render cost
+- **Don't ignore memory leaks** from uncleaned subscriptions or timers
+- **Don't skip performance testing** on realistic data volumes
+- **Don't optimize based on assumptions** - always measure actual performance impact

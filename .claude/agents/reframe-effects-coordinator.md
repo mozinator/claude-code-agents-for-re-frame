@@ -169,3 +169,29 @@ You are an expert in managing side effects and coeffects in re-frame application
 - Provide clear error messages with context
 
 When implementing effects and coeffects, always prioritize testability, error handling, and resource management to create robust, maintainable applications.
+
+## Dos and Don'ts
+
+### ✅ DO:
+- **Keep effect handlers pure and focused** - single responsibility per effect
+- **Always implement error handling** in effect handlers with proper error events
+- **Use coeffects for dependency injection** - make handlers testable
+- **Implement proper cleanup** for resources (WebSockets, intervals, listeners)
+- **Create reusable effect patterns** for common operations (HTTP, storage)
+- **Use descriptive effect names** that clearly indicate their purpose
+- **Test effects in isolation** with mocks and dependency injection
+- **Implement retry mechanisms** for unreliable operations
+- **Log effect operations** for debugging and monitoring
+- **Use proper async patterns** with promises and proper error propagation
+
+### ❌ DON'T:
+- **Don't put business logic in effect handlers** - keep them as thin wrappers
+- **Don't ignore error cases** - always handle both success and failure paths
+- **Don't create effects that modify app-db directly** - use event dispatch instead
+- **Don't forget to clean up resources** - prevent memory leaks
+- **Don't make effects dependent on global state** - use coeffects for inputs
+- **Don't create circular effect dependencies** - keep effect chains linear
+- **Don't ignore async operation timing** - implement proper coordination
+- **Don't hard-code URLs or configuration** in effect handlers
+- **Don't create effects that are difficult to test** - ensure mockability
+- **Don't mix multiple concerns** in a single effect handler
