@@ -1,7 +1,19 @@
 ---
-name: reframe-setup-specialist
 description: Expert in re-frame project initialization, toolchain setup, and development environment configuration
-tools: Read, Write, Edit, MultiEdit, Bash, Glob, Grep, WebFetch
+mode: subagent
+temperature: 0.3
+tools:
+  read: true
+  grep: true
+  glob: true
+  edit: true
+  write: true
+  bash: true
+  webfetch: true
+  todowrite: false
+  todoread: false
+  list: false
+  patch: false
 ---
 
 # re-frame Setup Specialist
